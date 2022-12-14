@@ -19,4 +19,5 @@ npm start
 ```
 
 The default message is set on the `DEFAULT_LANG` constant on the `index.js` file.
-This CLI save previous data on the `database.json` file.
+
+This CLI persists the previous data on the `database.json` file.
