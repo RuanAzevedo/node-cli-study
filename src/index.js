@@ -1,4 +1,5 @@
 import TerminalController from './terminalController.js'
+import { save } from './repository.js'
 
 import database from './../database.json'
 import Person from './person.js'
@@ -18,7 +19,9 @@ async function mainLoop() {
     }
 
     const person = Person.generateInstanceFromString(answer)
-    console.log({ person })
+    terminalController.updateTable(person.formatted(DEFAULT_LANG))
+
+    await save(person)
 
     return mainLoop()
   } catch (error) {
