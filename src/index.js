@@ -12,10 +12,14 @@ terminalController.initializeTerminal(database, DEFAULT_LANG)
 
 async function mainLoop() {
   try {
-    const answer = await terminalController.question('What is your command? ')
+    const answer = await terminalController.question(
+      `To insert a new row, type the data in the following format:\n
+<ID> <VEHICLES> <KM_TRAVELED> <FROM> <TO>\n
+or type :q to exit: `
+    )
 
     if (answer === STOP_TERM) {
-      terminalController.closeTerminal()
+      return terminalController.closeTerminal()
     }
 
     const person = Person.generateInstanceFromString(answer)
